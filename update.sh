@@ -2,11 +2,9 @@
 
 DIRPHPAPACHE=php-apache
 DIRPOSTGRES=postgres
-DIRNODE=node
 
 PHPAPACHEIMAGES=(apache)
 POSTGRESIMAGES=(latest)
-NODEIMAGES=(lts)
 
 for PHPAPACHEIMAGE in ${PHPAPACHEIMAGES[@]}
 do
@@ -30,15 +28,4 @@ do
   cp $DIRPOSTGRES/Dockerfile $DIRPOSTGRES/$POSTGRESIMAGE
 
   sed -i "1s/<POSTGRESIMAGE>/postgres:${POSTGRESIMAGE}/" $DIRPOSTGRES/$POSTGRESIMAGE/Dockerfile
-done
-
-for NODEIMAGE in ${NODEIMAGES[@]}
-do
-  if [ ! -d $DIRNODE/$NODEIMAGE ]; then
-    mkdir $DIRNODE/$NODEIMAGE
-  fi
-
-  cp $DIRNODE/Dockerfile $DIRNODE/$NODEIMAGE
-
-  sed -i "1s/<NODEIMAGE>/node:${NODEIMAGE}/" $DIRNODE/$NODEIMAGE/Dockerfile
 done
