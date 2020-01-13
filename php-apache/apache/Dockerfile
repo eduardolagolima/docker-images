@@ -1,4 +1,4 @@
-FROM php:7.4.0-apache
+FROM php:apache
 
 # Adiciona um usuário sem privilégios de root
 RUN useradd -m nonroot --uid=1000
