@@ -1,4 +1,4 @@
-FROM node:13.2.0
+FROM node:lts
 
 RUN npm install -g @vue/cli
 RUN npm install -g @vue/cli-service-global
