@@ -1,9 +1,15 @@
-postgres
-===
+# postgres
 
-    docker run -d --name postgres -h postgres eduardolagolima/postgres:latest
+    docker run -d -p 5432:5432 --name postgres -h postgres postgres
+    docker exec -ti postgres /bin/bash
 
-php-apache
-===
+# mongo
 
-    docker run -d --link postgres --name php-apache -h php-apache -p 8080:80 -e TZ=America/Sao_Paulo -v $PWD:/var/www/html -w /var/www/html eduardolagolima/php-apache:apache
+    docker run -d -p 27017:27017 --name mongo -h mongo mongo
+    docker exec -ti mongo /bin/bash
+
+# php-apache
+
+    docker run -d -p 80:80 --name php-apache -h php-apache -e TZ=America/Sao_Paulo -v $PWD:/var/www/html -w /var/www/html eduardolagolima/php-apache:apache
+    docker exec -ti --user=nonroot php-apache /bin/bash
+    docker exec -ti php-apache /bin/bash
